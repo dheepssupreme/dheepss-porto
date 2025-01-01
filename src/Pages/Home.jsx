@@ -78,7 +78,7 @@ const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
 const WORDS = ["DevOps Engineer & Student at Universitas Prima Indonesia", "Tech Enthusiast"];
-const TECH_STACK = ["Docker", "Kubernetes", "Jenkins", "Cloud"];
+const TECH_STACK = ["Docker", "Kubernetes", "CI/CD", "Cloud"];
 const SOCIAL_LINKS = [
   { icon: Github, link: "https://github.com/dheepssupreme" },
   { icon: Linkedin, link: "https://www.linkedin.com/in/dheo-putranta-pandia-052857270/" },

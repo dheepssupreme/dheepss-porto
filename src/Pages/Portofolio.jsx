@@ -13,7 +13,13 @@ import CardProject from "../components/CardProject";
 import TechStackIcon from "../components/TechStackIcon";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Code, Boxes } from "lucide-react";
+import { Code, Boxes, Award } from "lucide-react";
+import Certificate from "../components/Certificate";
+import nlpImage from "../assets/NLP-tf.jpg";
+import tfdevImage from "../assets/tensorflow-dev.jpg";
+import introtfImage from "../assets/introtf.jpg";
+import mlImage from "../assets/ml.jpg";
+import gitImage from "../assets/git.jpg";
 
 // Separate ShowMore/ShowLess button component
 const ToggleButton = ({ onClick, isShowingMore }) => (
@@ -106,6 +112,34 @@ const techStacks = [
   { icon: "aws.svg", language: "AWS" },
   { icon: "git.svg", language: "Git" },
   { icon: "github.svg", language: "GitHub" },
+];
+
+const certificates = [
+  {
+    id: 1,
+    image: tfdevImage,
+    title: "DeepLearning.AI Tensorflow Developer"
+  },
+  {
+    id: 2,
+    image: nlpImage,
+    title: "Natural Language Processing in Tensorflow"
+  },
+  {
+    id: 3,
+    image: mlImage,
+    title: "DeepLearning.AI Machine Learning Specialzation"
+  },
+  {
+    id: 4,
+    image: introtfImage,
+    title: "Introductio to tensorflow for AI, ML, DL"
+  },
+  {
+    id: 5,
+    image: gitImage,
+    title: "Google - Coursera Introduction to Git and GitHub"
+  },
 ];
 
 export default function FullWidthTabs() {
@@ -256,6 +290,11 @@ export default function FullWidthTabs() {
               label="Tech Stack"
               {...a11yProps(1)}
             />
+            <Tab
+              icon={<Award className="mb-2 w-5 h-5 transition-all duration-300" />}
+              label="Certificates"
+              {...a11yProps(2)}
+            />
           </Tabs>
         </AppBar>
 
@@ -304,6 +343,22 @@ export default function FullWidthTabs() {
                     data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
                   >
                     <TechStackIcon TechStackIcon={stack.icon} Language={stack.language} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </TabPanel>
+
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <div className="container mx-auto flex justify-center items-center overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {certificates.map((cert, index) => (
+                  <div
+                    key={cert.id}
+                    data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
+                    data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
+                  >
+                    <Certificate ImgSertif={cert.image} title={cert.title} />
                   </div>
                 ))}
               </div>

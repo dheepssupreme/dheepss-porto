@@ -134,7 +134,7 @@ const certificates = [
   {
     id: 4,
     image: introtfImage,
-    title: "Introductio to tensorflow for AI, ML, DL"
+    title: "Introduction to tensorflow for AI, ML, DL"
   },
   {
     id: 5,

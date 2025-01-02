@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm install --legacy-peer-deps && vite build",
+    "deploy":"npm run build && firebase deploy",
     "lint": "eslint .",
     "preview": "vite preview"
   },

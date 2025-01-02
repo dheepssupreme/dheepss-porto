@@ -15,6 +15,8 @@ const TECH_ICONS = {
   HTML: Code,
   CSS: Code,
   default: Package,
+  Docker: Code,
+  Kubernetes: Code,
 };
 
 const TechBadge = ({ tech }) => {

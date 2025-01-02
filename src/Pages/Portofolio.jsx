@@ -20,6 +20,7 @@ import tfdevImage from "../assets/tensorflow-dev.jpg";
 import introtfImage from "../assets/introtf.jpg";
 import mlImage from "../assets/ml.jpg";
 import gitImage from "../assets/git.jpg";
+import projects from '../components/ProjectData';
 
 // Separate ShowMore/ShowLess button component
 const ToggleButton = ({ onClick, isShowingMore }) => (
@@ -157,22 +158,9 @@ export default function FullWidthTabs() {
     });
   }, []);
 
-  const fetchData = useCallback(async () => {
-    try {
-      const projectCollection = collection(db, "projects");
-      const projectSnapshot = await getDocs(projectCollection);
-
-      const projectData = projectSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        TechStack: doc.data().TechStack || [],
-      }));
-
-      setProjects(projectData);
-      localStorage.setItem("projects", JSON.stringify(projectData));
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const fetchData = useCallback(() => {
+    setProjects(projects);
+    localStorage.setItem("projects", JSON.stringify(projects));
   }, []);
 
   useEffect(() => {
@@ -308,16 +296,16 @@ export default function FullWidthTabs() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5">
                 {displayedProjects.map((project, index) => (
                   <div
-                    key={project.id || index}
+                    key={project.id}
                     data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
-                    data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
+                    data-aos-duration={1000 + (index * 200)}
                   >
                     <CardProject
+                      id={project.id}
                       Img={project.Img}
                       Title={project.Title}
                       Description={project.Description}
-                      Link={project.Link}
-                      id={project.id}
+                      TechStack={project.TechStack}
                     />
                   </div>
                 ))}
